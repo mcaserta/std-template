@@ -1,0 +1,53 @@
+\section{Running}
+\label{sec:running}
+
+\subsection{No Hang Up}
+
+Commands that run in the foreground can be run in the background by
+using a combination of the \texttt{nohup} command and the shell's job
+control facilities. An example of starting the space rocket in the
+background is shown in code listing \ref{code:jobrun}.
+
+\begin{lstlisting}[label=code:jobrun,caption=Starting the space rocket in the background]
+$ cd ~/local/space-rocket-1.0.3
+$ nohup ./bin/start.sh &
+[1] 2522
+nohup: ignoring input and appending output to ‘nohup.out’
+\end{lstlisting}
+
+Standard output is now redirected to the \texttt{nohup.out} file and the
+process is running with id 2552 and job id 1. This means that you can
+later stop the process as shown in code listing \ref{code:jobkill}.
+
+\begin{lstlisting}[label=code:jobkill,caption=Stopping the space rocket]
+$ kill %1
+[1]+  Terminated              nohup ./bin/start.sh
+\end{lstlisting}
+
+To get a listing of the jobs running in the background, please run the
+commands in code listing \ref{code:joblist}.
+
+\begin{lstlisting}[label=code:joblist,caption=Listing the jobs running in the background]
+$ jobs
+[1]+  Running                 nohup ./bin/start.sh &
+\end{lstlisting}
+
+\subsection{Console Window Managers}
+
+Console window managers are software that allow multiple virtual
+terminals to be run on the same console. They also allow detaching from
+the console and reattaching at a later time. Examples of such software
+are
+screen\footnote{\href{http://www.gnu.org/software/screen/}{\texttt{http://www.gnu.org/software/screen/}}}
+and
+tmux\footnote{\href{http://tmux.sourceforge.net/}{\texttt{http://tmux.sourceforge.net/}}}.
+
+Ubuntu has a convenient wrapper for console window managers called
+byobu\footnote{\href{http://byobu.co/}{\texttt{http://byobu.co/}}}.
+
+We recommend getting familiar with a console window manager of your
+choice instead of relying on \texttt{nohup}.
+
+An excellent, simple, short tutorial on using byobu can be found in the
+online Ubuntu Community
+Help\footnote{\href{https://help.ubuntu.com/community/Byobu}{\texttt{https://help.ubuntu.com/community/Byobu}}}.

@@ -1,0 +1,54 @@
+\section{Building}
+
+Software modules need to be built in the same order as they appear in
+this document.
+
+In this section we assume a \texttt{\$HOME/build} directory has been
+created and all build work, including checking out the source code, will
+be performed in this directory.
+
+We also assume that if the build tool execution exits with a successful
+exit code\footnote{Apache Maven is very explicit with regard to its exit
+code, printing the final build status at the end of its processing work,
+i.e. it will print an explicit \textit{success} string} and a
+\texttt{target} directory was created in the process, then the build was
+successful and all artifacts were created correctly. 
+
+\subsection{Space Rocket}
+\subsubsection{Getting the source code}
+
+Please run the commands in code listing \ref{code:buildspacerocketclone}.
+
+\begin{lstlisting}[label=code:buildspacerocketclone,caption=Cloning the
+\texttt{space-rocket} module]
+$ cd $HOME/build
+$ git clone http://scm.acme.com/git/space-rocket
+\end{lstlisting}
+
+\subsubsection{Checking out a given version}
+
+Software versions are represented in the git repository as tags. Please
+follow the example in code listing \ref{code:buildspacerocketcheckout}
+to list the available tags and checkout a given version.
+
+\begin{lstlisting}[label=code:buildspacerocketcheckout,caption=Listing
+version tags and checking out one in the \texttt{space-rocket} module]
+$ cd $HOME/build/space-rocket
+$ git tag
+v1.0.2
+v1.0.3
+$ git checkout v1.0.3
+Note: checking out 'v1.0.3'.
+\end{lstlisting}
+
+\subsubsection{Build}
+\label{sec:buildspacerocketbuild}
+
+To build the software module, please run the commands in code listing
+\ref{code:buildspacerocketbuild}.
+
+\begin{lstlisting}[label=code:buildspacerocketbuild,caption=Building the
+\texttt{space-rocket} software module]
+$ cd $HOME/build/space-rocket
+$ mvn clean install
+\end{lstlisting}

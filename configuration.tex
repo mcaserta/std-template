@@ -1,0 +1,32 @@
+\section{Configuration}
+
+\subsection{Logging}
+\label{sec:logging}
+
+All of the \ac{AP} software modules make use of a logging framework called logback\footnote{\href{http://logback.qos.ch/}{\texttt{http://logback.qos.ch/}}}. 
+
+Logback configuration is performed through the \texttt{logback.xml} file. We will later provide the specific location of the \texttt{logback.xml} file for each software module in this section.
+
+Full documentation regarding logback configuration can be found online\footnote{\href{http://logback.qos.ch/manual/configuration.html}{\texttt{http://logback.qos.ch/manual/configuration.html}}}. We will however go through an example for your convenience.
+
+\lstinputlisting[basicstyle=\tiny,numbers=left,numbersep=5pt,numberstyle=\tiny\color{gray},xleftmargin=15pt,framexleftmargin=15pt,label=code:logbackxml,caption=An
+example \texttt{logback.xml} configuration file]{code/logback.xml}
+
+As you can see in code listing \ref{code:logbackxml}, there's a lot going on here. Let's see what's happening, line by line.
+
+\begin{itemize}
+\item[2] the configuration file should be automatically scanned for changes every 30 seconds and reloaded if necessary
+\item[3] a file appender is declared
+\item[4] the appender in 3 writes to a file called \texttt{space-rocket.log} in the \texttt{logs} directory
+\item[5] a time based rolling policy appender is declared
+\item[7] the appended in 5 will write files using the pattern specified here
+\item[9] files older than 30 days are automatically deleted
+\item[12] declares the pattern that will be used when printing to the appender in 3
+\item[15] an appender that writes to the standard output is declared
+\item[17] declares the pattern that will be used when printing to the appender in 15
+\item[20] declares the root level
+\item[21] attaches the appender in 3 to the root logger
+\item[22] attaches the appender in 15 to the root logger
+\item[24,25] the \texttt{com.acme} logger category is configured at \texttt{DEBUG} level
+\item[27,28] the \texttt{org.mylin} logger category is configured at \texttt{INFO} level
+\end{itemize}

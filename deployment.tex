@@ -1,0 +1,64 @@
+\section{Deployment}
+
+\subsection{Example deployment scenario}
+
+This document assumes all software to be installed on the same machine.
+In the real world, however...
+
+\ac{TBW}
+
+\subsection{Space Rocket}
+
+\subsubsection{Installation}
+
+Make sure you've previously followed the build steps in
+\ref{sec:buildspacerocketbuild}.
+
+Assuming you've previously built version 1.0.3, to package the
+spacerocket into a tarball for copying over to a remote machine, please
+run the commands in code listing
+\ref{code:spacerocketinstallpacktarball}.
+
+\begin{lstlisting}[label=code:spacerocketinstallpacktarball,caption=Preparing
+the space rocket's distribution tarball]
+$ cd ~/build/space-rocket/target
+$ tar cvjf ~/dist/space-rocket-1.0.3.tar.bz2 space-rocket-1.0.3
+\end{lstlisting}
+
+At this point you must copy the distribution tarball to the target
+machine in the \texttt{\$HOME/dist} directory.
+
+Once on the target machine, to unpack the tarball and to verify its
+contents, please run the commands in code listing
+\ref{code:spacerocketinstallunpacktarball}.
+
+\begin{lstlisting}[label=code:spacerocketinstallunpacktarball,caption=Unpacking
+the space rocket's distribution tarball]
+$ tar xj -C ~/local -f ~/dist/space-rocket-1.0.3.tar.bz2
+$ ls ~/local/space-rocket-1.0.3
+bin  config  deploy  lib
+\end{lstlisting}
+
+\subsubsection{Configuration}
+
+To configure logging for the space rocket, please refer to
+\ref{sec:logging}.
+
+\subsubsection{Running}
+
+To start the space rocket, please run the commands in code listing
+\ref{code:spacerocketinstallrun}.
+
+\begin{lstlisting}[label=code:spacerocketinstallrun,caption=Starting the
+space rocket]
+$ cd ~/local/space-rocket-1.0.3
+$ ./bin/start
+Starting Akka...
+Running Akka 2.1.2
+Deploying file:/home/acme/local/space-rocket-1.0.3/deploy/space-rocket-impl_...
+Starting up com.acme.platform.spacerocket.SpaceRocketKernel
+Successfully started Akka
+\end{lstlisting}
+
+The space rocket runs in the foreground. To detach from the running
+process, please refer to \ref{sec:running}.

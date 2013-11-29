@@ -1,0 +1,24 @@
+\section{Conventions}
+
+Commands to be executed on the target system are represented using the  convention in code listing \ref{code:convreguser}.
+
+\begin{lstlisting}[label=code:convreguser,caption=Command line example as a regular user]
+$ id
+uid=1000(acme) gid=1000(acme) groups=1000(acme),4(adm),27(sudo)
+\end{lstlisting}
+
+The \texttt{\$} prompt symbol is the common convention for commands to be entered at the command line prompt by a \textbf{regular user} and is not supposed to be literally typed on the keyboard. 
+
+\begin{lstlisting}[label=code:convrootuser,caption=Command line example as the root user]
+# id
+uid=0(root) gid=0(root) groups=0(root)
+\end{lstlisting}
+
+The \texttt{\#} prompt symbol is the common convention for commands to be entered at the command line prompt by the \textbf{root user} and is also not supposed to be literally typed on the keyboard. An example is given in code listing \ref{code:convrootuser}.
+
+On Ubuntu systems, it is usually possible to run commands as the root user from a regular user account by prefixing them with the \texttt{sudo} command\footnote{the password sudo asks for is the password of the regular user you used to log in}. An example is given in code listing \ref{code:convsudo}.
+
+\begin{lstlisting}[label=code:convsudo,caption=Command line example as the root user using sudo]
+$ sudo id
+uid=0(root) gid=0(root) groups=0(root)
+\end{lstlisting}
